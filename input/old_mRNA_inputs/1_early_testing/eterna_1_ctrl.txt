@@ -1,0 +1,25 @@
+# RNA information
+-domain_list G
+-constant_5_prime ACAUUUGCUUCUGACACAACUGUGUUCACUAGCAACCUCAAACAGACACC
+-constant_3_prime UAAGCUCGCUUUCUUGCUGUCCAAUUUCUAUUAAAGGUUCCUUUGUUCCCUAAGUCCAACUACUAAACUGGGGGAUAUUAUGAAGGGCCUUGAGCAUCUGGAUUCUGCCUAAUAAAAAACAUUUAUUUUCAUUGCAA
+
+# RNA sequence information NL
+-domain G MWLVSLAIVTACAGAMAVYPYDVPDYAGYPYDVPDYAGSYPYDVPDYAGSGVFTLEDFVGDWRQTAGYNLDQVLEQGGVSSLFQNLGVSVTPIQRIVLSGENGLKIDIHVIIPYEGLSGDQMGQIEKIFKVVYPVDDHHFKVILHYGTLVIDGVTPNMIDYFGRPYEGIAVFDGKKITVTGTLWNGNKIIDERLINPDGSLLFRVTINGVTGWRLCERILA None F mRNA fg
+
+
+# ligand information
+# mRNA features: dG dGopen mld hp 3wj 4wj 5wj wj hp/3wj bpsum bpunpaired mcc bpp cai
+-condition condition_1 [dGopen.max:-500]
+
+
+
+# MCTS information
+-length 0 # Length of switch
+-n_iter 1000
+-c_const -1
+-n_children 1
+-scale 200
+-package eternafold
+-nucleotide_repeat False
+-output /scratch/users/cachoe/Rhiju/ribotree/eterna_1
+-verbose False

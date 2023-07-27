@@ -1,0 +1,28 @@
+# RNA sequence: Multi-epitope vaccine
+-constant_5_prime ACAUUUGCUUCUGACACAACUGUGUUCACUAGCAACCUCAAACAGACACC
+-constant_3_prime GCUCGCUUUCUUGCUGUCCAAUUUCUAUUAAAGGUUCCUUUGUUCCCUAAGUCCAACUACUAAACUGGGGGAUAUUAUGAAGGGCCUUGAGCAUCUGGAUUCUGCCUAAUAAAAAACAUUUAUUUUCAUUGCAA
+
+-domain G MGGSGGSGYQPYRVVVLGGSGGSPYRVVVLSFGGSGGSLSPRWYFYY* aa p
+
+-condition condition_1 [degscore.min:50]
+
+-allow_nucleotide_repeat True #Setting to true prohibits AAAAA, CCCC, UUUU, and GGGG
+-restriction_sites GTGTCGT, AGCUG
+
+# I/O options
+-output .
+-verbose False
+
+# MCTS parameters
+-T 300
+-package vienna
+-linearfold False
+-num_mutate 10
+-n_iter 100
+-stride 10
+-c_const 10
+-beam True
+-scale 10
+-n_children 3
+
+-seed 2131321

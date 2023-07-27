@@ -1,0 +1,52 @@
+# 1) RNA information
+-constant_5_prime <string: default ""> RNA sequence that will be appended at the 5' end. Will remain constant through the run.
+-constant_3_prime <string: default ""> RNA sequence that will be appended at the 3' end. Will remain constant through the run.
+-domain <string: domain name> <string: RNA/amino acid sequence> <string: domain type> <string: domain options>
+	# domain name: Name of the domain. Must be single capital letter (e.g. G)
+	# RNA/amino acid sequence: Sequence of the domain. Must be either RNA or amino acid. For stop codons use "*"
+	# domain types: mRNA, or aa (amino acid)
+	# domain options: 
+		# p (choose mutation position based on prob(unpaired)
+		# f (choose replacement codon based on human codon distribution)
+		# g (choose codon replacement codon based on GC content)
+		# Note: can combine domain options (e.g. pf)
+
+# 2) Condition
+-condition condition_1 <criteria>.<max/min>
+	# criteria list: degscore dG dGopen mld hp 3wj 4wj 5wj wj hp/3wj bpsum bpunpaired mcc bpp cai
+	# See preprint for exact definition of criteria.
+	# Can also specify a normalization value with [<criteria>.<max/min>:<float>]
+	# e.g. 
+		# -condition condition_1 degscore.min
+		# -condition condition_1 [dG.min:-500]
+
+# 3) Package
+-package <string: default ""> RNA folding package to use for evaluation
+-linearfold <boolean: default False> Whether to use the linearfold variant of the package. Requires installation
+-mod_U <boolean: default False> Whether to mask uracils for degscore only. For psuedouracil.
+
+# 4) MCTS parameters
+-n_mut <int: default 1> Number of mutations to make per move
+-n_iter <int: default 100> # Number of nodes to creates in the MCTS. Equivalent to the number of sequences it accepts in the entire run.
+-n_children <int: default 3> # Number of children nodes to create from each parent node
+-c_const <float: default -1> # c constant from the UCT1 formula. It controls the depth vs breadth of the tree. If c == -1 then it performs a linear MCTS. Larger values favors breadth search (exploration).
+-T <float: default 330.15> # Temperature for the probability of accepting a given move. P(acceptance) = exp( delta Score / (k*T)) ; k = Boltzmann constant
+-scale <float: default 1> # scaling factor that affect the final evaluation of each node. Higher value favors depth search.
+-beam <boolean: default False> # Whether or not to do beam MCTS. Allows better depth search. Default is False
+
+# 5) Sequence evaluation parameters
+-restriction_sites <str: default ""> Comma delimited list of short RNA sequences to avoid. (e.g. -restriction_sites GTGTCGT, AGCUG)
+-allow_nucleotide_repeat <bool: default False> # whether to allow for 4 nucleotide repeats. Typically False since nucleotide repeats make synthesis more difficult
+-sequence <string: default None> # if flag is given MCTS will not run. Instead this sequence will be evaluated according to the conditions.
+-Temp <float: default 37.0> # temperature in celcius for the RNA folding packages. Does not affect degscore.
+-verbose <bool: default False> # whether to print every output from the run
+-seed <int: default None> # random seed for rng. Only affects the initial sequence genereation.
+
+# 6) Output parameters
+-output <string: output file location: default "."> # location of where to save all outputs
+-stride <int: default 100> # intermittently saves the results of the run after x nodes are created.
+-plot <bool: default False> # whether to plot the full MCTS after each step.
+
+# 7) CDSFold integration
+-CDSFold_path <str: default None> Path to the executable inside CDSfold src. (e.g. <path>/CDSfold-0.2/src/CDSfold)
+-CDSFold_prob <float: default 0> Probability for calling CDSfold as a move in the MCTS.

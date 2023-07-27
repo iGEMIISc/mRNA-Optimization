@@ -1,0 +1,71 @@
+# RNA information
+-segment_list [M,F] [M',*] [M",*] [A',*] [A",*] [B',*] [B",*]
+	# Format is [<segment>, <length>]
+	# <segment>
+	# You can also specify random segments:
+	# *H (random hairpin), *N (random bases), *A/C/G/U (only that base)
+	# * (any RNA sequence e.g. A, B, M), ** (any RNA sequence or *H or *N. Will randomly add ', ", or nothing)
+	# You can also append a ' or " E.g. M A B *N1 *N1' *N2 *' *"
+	# You can also generate combined segments:
+	# <seg_1>+<seg_2> E.g. A+B will give you the consensus sequence from the alignment of A and B
+	# Can also do A+B' if you want a complementary segment to A+B
+	# A+B" is not allowed
+
+	# <length>
+	# For length you can do * for random, or x*y for random normal with mean x and standard deviation y (y is optional)
+	# or F which means full length
+	# E.g. [A, F] [A, 10] [A, *] [A, 10*] [A, 10*2]
+-preserve_seq M Specifies which segments to NOT mutate (e.g. aptamer segement)
+
+-constant_5_prime GG # Appends to the 5' end of the RNA/DNA. Default is None
+-constant_3_prime AU # Appends to the 3' end of the RNA/DNA. Default is None
+
+# RNA sequence information
+-A ACCCCACAAUAAAGAAUAAG
+-B CUAAGCAGUUCCCUCAUU
+-M ACAUGAGGAUCACCCAUGU
+-lig_1 ACAUGAGGAUCACCCAUGU (((((x((xxxx))))))) 10e-9
+
+# Input ordering VERY IMPORTANT!
+-input_list A B lig_1
+	# When inputs are both DNA/RNA and ligand, list the DNA/RNA first
+
+# Conditions
+-condition_1 [0,       0, 10e-9] [A:0, B:0, M:0]
+-condition_2 [1e-7,    0, 10e-9] [A:1, B:0, M:1]
+-condition_3 [0,    1e-7, 10e-9] [A:0, B:1, M:1]
+-condition_4 [1e-7, 1e-7, 10e-9] [A:1, B:1, M:0]
+# format is -conditon_n [condition] [<lig/RNA>:<0/1>]
+# 0 is unbound, 1 is bound. E.g. A:1 or M:0
+# format for [condition] is [A, B, ..., lig_1, lig_2, ...] in molarity [M]. E.g. [100e-6, 10e-6, 10e-9]
+# Order of the concentrations correspond to the order of the input_list
+-average ARDR:1000
+	# Average will cause the conditions to be averaged together making the MCTS single objecive optimization
+	# Can specify AR, DR, ARDR, wAR, wDR, wARDR. (ARDR = AR * DR)
+	# w is for worst case
+
+# MCTS information
+-length 85 # Length of switch (DOES NOT INCLUDE -constant_5_prime and -constant_3_prime)
+-n_iter 500 # Number of iterations (total number of nodes generated NOT levels in the tree). Default is 300
+-n_children 3 # Number of children nodes. Default is 3
+-c_const -1 # c_const is a float from [0, inf]. If c_const < 0 then only a linear MC search will run. Default is -1
+-beam <bool> # Whether or not to do beam MCTS. Default is False
+-num_shuffle 1 # Number of segments to shuffle if shuffling segments. Default is 1
+-gu_level 0 # Probability of wobble base GU pairing when generating complementary sequenes. Default is 0
+-segment_order boolean # Optional. The starting order of the segments. Default is False
+-constant_length False # Whether or not to preserve the length of each segment. Default is False
+-strict False # Whether or not the MFE must satisfy the condition (rather than looking at the ensemble average). Default is False
+-nucleotide_repeat False # Whether to allow long nucleotide repeat. Generally off since it may be hard to synthesize. Default is False
+-seed 1234 # Random seed but doesn't really matter. Optional
+-Temp 37 # Units in Celcius. Default is 37.
+-verbose True # Whether to be verbose (prints everything out). Default is False
+-output output_folder # Specifies where to put the output files. Default is False
+-save_ss False # Specifies if you want to save the nupack calculations to output_folder. Default is False.
+-plot False # Specifies if you want to plot the MCTS after each iteration for visualization. Default is False.
+
+-dna False # to design dna switches. (ONLY USE T in all your sequences). Default is False.
+-package nupack # Determines which folding package to use. Can use contrafold, vienna, and nupack. Default is contrafold for ligands and nupack for dna/rna binding. 
+
+# unique flags
+-seq ACUGACUGACUGACUGACUAGAUGCACUAUACGCAUAGCUAUCGUGCAG
+	# the code will ONLY output the condition values for this sequence and NOT run MCTS

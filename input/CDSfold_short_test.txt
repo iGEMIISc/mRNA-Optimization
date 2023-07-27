@@ -1,0 +1,20 @@
+# RNA sequence: Nanoluciferase (used in OpenVaccine)
+-domain G MGGSGGSGYQPYRVVVLGGSGGSPYRVVVLSFGGSGGSLSPRWYFYY* aa p
+
+-condition condition_1 degscore.min
+-allow_nucleotide_repeat True
+
+-package eternafold
+-linearfold True
+-n_children 3
+-num_mutate 1
+-n_iter 100
+-stride 10
+-c_const -1
+-scale 10
+-T 0.03
+-CDSFold_path /home/users/cachoe/packages/CDSfold_SU/src/CDSfold
+-CDSFold_prob 0.5
+
+-output /scratch/users/cachoe/Rhiju/ribotree/output
+-verbose False
