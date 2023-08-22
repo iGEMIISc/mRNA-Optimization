@@ -1,4 +1,4 @@
-This repository uses **RiboTree-mRNA** to optimize our mRNA sequences. However, the files related to RiboTree have been omitted from the repository since the tool is distributed with a license.
+This repository uses **RiboTree-mRNA** to optimize our mRNA sequences. However, the files related to RiboTree have been omitted from the repository since the tool is distributed with a license. This is work in progress, and results will soon be added.
 
 ## Some additional things to install
 
