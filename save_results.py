@@ -72,7 +72,7 @@ def save_best_MC_results_to_csv(sol_node, args_d, outfile):
 
     if os.path.exists(args_d['output'] + outfile):
         df_old = pd.read_csv(args_d['output'] + outfile, delimiter='\t')
-        df = df_old.append(df, ignore_index=True)
+        df = pd.concat([df_old, df])
 
     df.to_csv(args_d['output'] + outfile, sep='\t', quoting=csv.QUOTE_NONE, index=False)
 
