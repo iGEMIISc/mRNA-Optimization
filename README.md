@@ -36,8 +36,10 @@ TMP: /tmp
 
 #### Open PRs
 1. [Fixed InferenceEngine.hpp](https://github.com/csfoo/contrafold-se/pull/4) in `contrafold-se`
-2. [Modify documentation for adding Vienna to arnie file ](https://github.com/DasLab/arnie/pull/30) in `arnie`
-3. [Fixed error with file deletion on first run](https://github.com/DasLab/arnie/pull/31) in `arnie`
+
+#### Merged PRs
+1. [Modify documentation for adding Vienna to arnie file ](https://github.com/DasLab/arnie/pull/30) in `arnie`
+2. [Fixed error with file deletion on first run](https://github.com/DasLab/arnie/pull/31) in `arnie`
 
 #### Other bugs reports
 
