@@ -1,4 +1,6 @@
-## Some more things to install
+This repository uses **RiboTree-mRNA** to optimize our mRNA sequences. However, the files related to RiboTree have been omitted from the repository since the tool is distributed with a license.
+
+## Some additional things to install
 
 ```bash
 $ sudo apt-get install gfortran
