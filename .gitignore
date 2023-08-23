@@ -9,6 +9,7 @@ benchmarking/input_files*
 benchmarking/output_files*
 bencharking/input_combos_pd.tsv
 *.param
+
 arnie/
 contrafold-se/
 DegScore/
@@ -19,3 +20,9 @@ RiboGraphViz/
 vienna/
 ViennaRNA-2.6.3/
 
+example_analysis/
+input/
+reference/
+*.ipynb
+*.txt
+*.py
