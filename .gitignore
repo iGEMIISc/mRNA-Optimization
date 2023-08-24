@@ -21,8 +21,13 @@ vienna/
 ViennaRNA-2.6.3/
 
 example_analysis/
-input/
+input/*
 reference/
 *.ipynb
 *.txt
 *.py
+*.ps
+README.old.md
+
+!input/antibody*
+!antibody*FULL*
