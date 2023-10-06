@@ -30,4 +30,10 @@ reference/
 README.old.md
 
 !input/antibody*
-!antibody*FULL*
+!input/anti_il8*
+!input/anti_il6*
+!input/anti_pd1*
+!input/cd36*
+!*FULL.txt
+example.*
+!visualize.py

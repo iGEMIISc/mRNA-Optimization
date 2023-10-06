@@ -1,4 +1,12 @@
-This repository uses **RiboTree-mRNA** to optimize our mRNA sequences. However, the files related to RiboTree have been omitted from the repository since the tool is distributed with a license. This is work in progress, and results will soon be added.
+This repository uses **RiboTree-mRNA** to optimize our mRNA sequences. However, the files related to RiboTree have been omitted from the repository since the tool is distributed with a license. The following sequences have been optimized.
+
+1. Anti PD1
+2. Anti PD1 nanobody
+3. Q-IL6-9 antibody
+4. Q-IL6-9 nanobody
+5. O-IL8-15 antibody
+6. O-IL8-15 nanobody
+7. CD36
 
 ## Some additional things to install
 
